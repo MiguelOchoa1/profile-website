@@ -6,7 +6,7 @@
     "dev": "next dev",
     "prebuild": "bun llms-txt && bun llms-full-txt",
     "build": "next build",
-    "start": "next start",
+    "serve": "serve -p 3000 out",
     "lint": "next lint",
     "format": "prettier --write .",
     "llms-txt": "bun scripts/generate-llms-txt.js",
@@ -55,7 +55,8 @@
     "eslint-config-next": "14.2.12",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.12",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "serve": "^14.2.5"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

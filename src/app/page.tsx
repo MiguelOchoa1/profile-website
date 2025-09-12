@@ -237,7 +237,7 @@ export default function Page() {
                 {DATA.achievements.map((achievement, id) => (
                   <div key={achievement.title + id}>
                     <div>
-                      <Image
+                      <img
                         className="w-72 h-48 object-cover"
                         src={achievement.image}
                         alt={achievement.title}
