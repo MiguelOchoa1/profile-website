@@ -1,7 +1,6 @@
 import BlogPostItem from "@/components/blog-post-item";
 import BlurFade from "@/components/magicui/blur-fade";
 import { posts } from "@/data/posts";
-import Link from "next/link";
 
 export const metadata = {
   title: "Blogs - My Content Related Work",
@@ -70,17 +69,20 @@ export default async function BlogPage() {
               </h2>
             </BlurFade>
             <div className="flex flex-col gap-4 mb-8">
-              {postsByYear[year].map((post) => {
+              {postsByYear[year].map((post, index) => {
                 delayIndex++;
                 return (
-                  <BlogPostItem
-                    key={post.slug}
-                    title={post.title}
-                    href={post.href}
-                    slug={post.slug}
-                    publishedAt={post.publishedAt}
+                  <BlurFade
+                    key={`${year}-${index}`}
                     delay={BLUR_FADE_DELAY * 2 + delayIndex * 0.05}
-                  />
+                  >
+                    <BlogPostItem
+                      title={post.title}
+                      href={post.href}
+                      slug={post.slug}
+                      publishedAt={post.publishedAt}
+                    />
+                  </BlurFade>
                 );
               })}
             </div>
@@ -90,12 +92,12 @@ export default async function BlogPage() {
       <BlurFade delay={BLUR_FADE_DELAY * 2 + delayIndex * 0.05}>
         <p className="text-center my-8 text-sm text-muted-foreground">
           Follow me on{" "}
-          <Link
+          <a
             className="underline text-foreground"
             href="https://dev.to/chiragagg5k"
           >
             dev.to
-          </Link>{" "}
+          </a>{" "}
           for more content!
         </p>
       </BlurFade>

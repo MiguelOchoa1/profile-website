@@ -12,7 +12,6 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 import { DATA } from "@/data/resume";
 import { Notebook } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -57,16 +56,12 @@ export default function Page() {
               {DATA.summary}
             </Markdown>
             <div className="flex items-center justify-end mt-4">
-              <Link
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <Button size={`sm`} variant={`outline`}>
                   Download Resume
                   <Notebook className="ml-2 h-4 w-4" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </BlurFade>
         </section>
@@ -264,23 +259,23 @@ export default function Page() {
                 <p className="mx-auto max-w-[600px] text-muted-foreground text-sm/relaxed md:text-base/relaxed">
                   Or just want to have a casual chat? you can just shoot me a dm
                   on{" "}
-                  <Link
+                  <a
                     href={DATA.contact.social.X.url}
                     className="text-foreground hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Twitter
-                  </Link>{" "}
+                  </a>{" "}
                   or{" "}
-                  <Link
+                  <a
                     href={DATA.contact.social.X.url}
                     className="text-foreground hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     LinkedIn
-                  </Link>
+                  </a>
                   .
                 </p>
               </div>

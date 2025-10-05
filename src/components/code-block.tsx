@@ -1,11 +1,16 @@
 "use client";
 import { useTheme } from "next-themes";
 import { Highlight, themes, type Language } from "prism-react-renderer";
-import { ComponentProps, useState } from "react";
+import { ComponentProps, useState, useEffect } from "react";
 
 const CodeBlock = (props: ComponentProps<"pre">) => {
   const [copied, setCopied] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { theme, resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const codeElement = props.children as React.ReactElement;
   const codeText = codeElement?.props?.children || "";
@@ -25,6 +30,10 @@ const CodeBlock = (props: ComponentProps<"pre">) => {
     });
   };
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div className="relative group rounded-lg overflow-hidden my-6 border border-border">
       <Highlight theme={prismTheme} code={codeText} language={language}>
@@ -42,16 +51,22 @@ const CodeBlock = (props: ComponentProps<"pre">) => {
                     line[0].empty
                   ),
               )
-              .map((line, i) => (
-                <div key={i} {...getLineProps({ line, key: i })}>
-                  <span className="text-muted-foreground mr-4 inline-block w-6 text-right select-none">
-                    {i + 1}
-                  </span>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              ))}
+              .map((line, i) => {
+                const lineProps = getLineProps({ line, key: i });
+                const { key: lineKey, ...restLineProps } = lineProps;
+                return (
+                  <div key={i} {...restLineProps}>
+                    <span className="text-muted-foreground mr-4 inline-block w-6 text-right select-none">
+                      {i + 1}
+                    </span>
+                    {line.map((token, key) => {
+                      const tokenProps = getTokenProps({ token, key });
+                      const { key: tokenKey, ...restTokenProps } = tokenProps;
+                      return <span key={key} {...restTokenProps} />;
+                    })}
+                  </div>
+                );
+              })}
           </pre>
         )}
       </Highlight>

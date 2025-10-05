@@ -2,8 +2,6 @@
 
 import { formatDate } from "@/lib/utils";
 import { ArrowRightIcon, ExternalLink } from "lucide-react";
-import Link from "next/link";
-import BlurFade from "./magicui/blur-fade";
 import {
   Tooltip,
   TooltipContent,
@@ -16,7 +14,7 @@ interface BlogPostItemProps {
   href?: string;
   slug?: string;
   publishedAt: string;
-  delay: number;
+  delay?: number;
 }
 
 export default function BlogPostItem({
@@ -24,32 +22,30 @@ export default function BlogPostItem({
   href,
   slug,
   publishedAt,
-  delay,
 }: BlogPostItemProps) {
   return (
-    <BlurFade delay={delay}>
-      <div className="pb-4">
-        <div className="flex items-center justify-between">
-          <Link href={href ? href : `/blog/${slug}`}>
-            <div className="group/title">
-              <div className="flex items-center justify-start gap-4">
-                <h1>{title}</h1>
-                {href ? (
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover/title:scale-110 transition-all duration-500 ease-out" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>External link - opens in new tab</p>
-                    </TooltipContent>
-                  </Tooltip>
-                ) : (
-                  <ArrowRightIcon className="w-4 h-4 opacity-0 -translate-x-2 group-hover/title:opacity-100 group-hover/title:translate-x-0 transition-all duration-500 ease-out" />
-                )}
-              </div>
+    <div className="pb-4">
+      <div className="flex items-center justify-between">
+        <a href={href ? href : `/blog/${slug}`}>
+          <div className="group/title">
+            <div className="flex items-center justify-start gap-4">
+              <h1>{title}</h1>
+              {href ? (
+                <Tooltip>
+                  <TooltipTrigger>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground group-hover/title:scale-110 transition-all duration-500 ease-out" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>External link - opens in new tab</p>
+                  </TooltipContent>
+                </Tooltip>
+              ) : (
+                <ArrowRightIcon className="w-4 h-4 opacity-0 -translate-x-2 group-hover/title:opacity-100 group-hover/title:translate-x-0 transition-all duration-500 ease-out" />
+              )}
             </div>
-          </Link>
-          {/* <button
+          </div>
+        </a>
+        {/* <button
             className="flex items-center gap-1 px-3 py-1 rounded-full text-sm hover:bg-muted transition-colors"
             onClick={handleUpvote}
           >
@@ -58,11 +54,8 @@ export default function BlogPostItem({
               <span className="text-muted-foreground">{upvotes}</span>
             )}
           </button> */}
-        </div>
-        <p className="text-sm text-muted-foreground">
-          {formatDate(publishedAt)}
-        </p>
       </div>
-    </BlurFade>
+      <p className="text-sm text-muted-foreground">{formatDate(publishedAt)}</p>
+    </div>
   );
 }

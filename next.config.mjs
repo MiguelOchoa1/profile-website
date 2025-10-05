@@ -9,12 +9,7 @@ const nextConfig = {
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   reactStrictMode: true,
-  redirects: () => {
-    return [
-      { source: "/index.html", destination: "/", permanent: true },
-      { source: "/index.php", destination: "/", permanent: true },
-    ];
-  },
+  skipTrailingSlashRedirect: true,
   images: {
     remotePatterns: [
       {

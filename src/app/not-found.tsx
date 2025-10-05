@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -12,11 +11,11 @@ export default function NotFound() {
         portfolio. <br />
         Can you please check the URL or <a href="/">go back to home</a>?
       </p>
-      <Link href={"/"}>
+      <a href={"/"}>
         <Button className="mt-4" variant={"outline"}>
           Go back home
         </Button>
-      </Link>
+      </a>
     </div>
   );
 }

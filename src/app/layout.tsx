@@ -2,6 +2,7 @@ import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { PostHogProvider } from "@/components/posthog-provider";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/next";
@@ -75,14 +76,16 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <TooltipProvider delayDuration={0}>
-            {children}
-            <Navbar />
-            <Analytics />
-          </TooltipProvider>
-          <Toaster />
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <TooltipProvider delayDuration={0}>
+              {children}
+              <Navbar />
+              <Analytics />
+            </TooltipProvider>
+            <Toaster />
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

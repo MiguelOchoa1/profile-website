@@ -1,6 +1,4 @@
 import type { MDXComponents } from "mdx/types";
-import Image from "next/image";
-import Link from "next/link";
 import { ComponentProps } from "react";
 import CodeBlock from "./components/code-block";
 import GitHub from "./components/ui/github";
@@ -20,9 +18,9 @@ type HeadingProps = {
 const CustomLink = ({ href, children, ...props }: CustomLinkProps) => {
   if (href.startsWith("/")) {
     return (
-      <Link href={href} {...props} className="underline">
+      <a href={href} {...props} className="underline">
         {children}
-      </Link>
+      </a>
     );
   }
 
@@ -49,7 +47,7 @@ const CustomLink = ({ href, children, ...props }: CustomLinkProps) => {
 
 const CustomImage = ({ alt = "", ...props }: ComponentProps<"img">) => {
   return (
-    <div className="my-6 w-full overflow-hidden relative">
+    <span className="my-6 w-full overflow-hidden relative block">
       <img
         alt={alt}
         width={0}
@@ -59,7 +57,7 @@ const CustomImage = ({ alt = "", ...props }: ComponentProps<"img">) => {
         loading="lazy"
         {...props}
       />
-    </div>
+    </span>
   );
 };
 
@@ -169,9 +167,15 @@ const ListItem = (props: ComponentProps<"li">) => (
   />
 );
 
-const MDXWrapper = (props: ComponentProps<"div">) => (
-  <div className="px-6" {...props} />
-);
+const MDXWrapper = ({ children, ...props }: ComponentProps<"div">) => {
+  // Filter out Next.js specific props that shouldn't be passed to DOM elements
+  const { searchParams, ...domProps } = props as any;
+  return (
+    <div className="px-6" {...domProps}>
+      {children}
+    </div>
+  );
+};
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -20,7 +19,7 @@ export default function Navbar() {
           <DockIcon key={item.href}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
+                <a
                   href={item.href}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
@@ -28,7 +27,7 @@ export default function Navbar() {
                   )}
                 >
                   <item.icon className="size-4" />
-                </Link>
+                </a>
               </TooltipTrigger>
               <TooltipContent>
                 <p>{item.label}</p>
@@ -43,7 +42,7 @@ export default function Navbar() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
+                  <a
                     href={social.url}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
@@ -53,7 +52,7 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                   >
                     <social.icon className="size-4" />
-                  </Link>
+                  </a>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{name}</p>

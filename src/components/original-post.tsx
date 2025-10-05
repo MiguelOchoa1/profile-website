@@ -1,5 +1,4 @@
 import { ExternalLink } from "lucide-react";
-import Link from "next/link";
 import { Button } from "./ui/button";
 
 export const OriginalPost = ({
@@ -13,7 +12,7 @@ export const OriginalPost = ({
 }) => {
   return (
     <div className={`mt-8 flex justify-center mb-24 ${className}`}>
-      <Link
+      <a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
@@ -26,7 +25,7 @@ export const OriginalPost = ({
           {text}
           <ExternalLink size={16} className="ml-1" aria-hidden="true" />
         </Button>
-      </Link>
+      </a>
     </div>
   );
 };

@@ -4,7 +4,6 @@ import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
 import React from "react";
 import Markdown from "react-markdown";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -132,7 +131,7 @@ export const ResumeCard = ({
                 {links && (
                   <div className="flex flex-wrap gap-x-2 mt-8">
                     {links.map((link, index) => (
-                      <Link
+                      <a
                         target="_blank"
                         rel="noopener noreferrer"
                         key={index}
@@ -142,7 +141,7 @@ export const ResumeCard = ({
                       >
                         {link.icon}
                         {link.type}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 )}
