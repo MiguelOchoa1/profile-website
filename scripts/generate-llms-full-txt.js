@@ -87,7 +87,7 @@ Generated automatically from MDX files during build.
     console.log(
       `✅ Successfully generated llms-full.txt with ${processedCount} blog posts`,
     );
-    console.log(`📍 File location: ${outputPath}`);
+    console.log(`📍 File location: ${outputPath}\n`);
   } catch (error) {
     console.error("💥 Error generating llms-full.txt:", error);
     process.exit(1);

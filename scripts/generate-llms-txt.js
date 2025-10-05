@@ -97,7 +97,7 @@ ${cleanedContent}`;
       `✅ Successfully generated llms.txt with ${processedCount} blog posts`,
     );
     console.log(`📍 Main file location: ${outputPath}`);
-    console.log(`📍 Individual files location: ${llmsDir}`);
+    console.log(`📍 Individual files location: ${llmsDir}\n`);
   } catch (error) {
     console.error("💥 Error generating llms.txt:", error);
     process.exit(1);
