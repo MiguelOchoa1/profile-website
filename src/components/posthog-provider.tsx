@@ -14,7 +14,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
 
     if (key && isProduction) {
       posthog.init(key, {
-        api_host: "/ingest",
+        api_host: "https://us.i.posthog.com",
         ui_host: "https://us.posthog.com",
         defaults: "2025-05-24",
         capture_exceptions: true,
