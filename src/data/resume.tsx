@@ -1,19 +1,19 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon, Play } from "lucide-react";
 import { DiPostgresql } from "react-icons/di";
-import { FaDocker, FaNodeJs, FaPython } from "react-icons/fa";
+import { FaDocker, FaNodeJs, FaPython, FaSpotify } from "react-icons/fa";
 import { SiAppwrite, SiKubernetes } from "react-icons/si";
 
 export const DATA = {
-  name: "Chirag Aggarwal",
+  name: "Miguel Ochoa",
   initials: "CA",
   url: "https://www.chiragaggarwal.tech",
   location: "Delhi NCR, India",
   locationLink: "https://maps.app.goo.gl/Zbzok1mCik445h1C6",
   description:
-    "A developer building cool solutions with open source technologies.",
+    "I love composing music and I love working with technology, I've built this website!",
   summary:
-    "I am Chirag Aggarwal, a fourth-year Bachelor of Technology student from India, currently studying Computer Science Engineering. Although I am primarily a **Platform Engineer**, specializing in building scalable and robust backend systems, I also do enjoy working in Frontend side of things. Additionally, I have a passion for content writing and conducting research on various topics, particularly in the fields of **Artificial Intelligence** and **System Architecture**.",
+    "I am Miguel Ochoa, I really enjoy playing the piano :D if you want to know more about me, I have put blogs and videos ",
   avatarUrl: "/me.png",
   skills: [
     {
@@ -187,89 +187,8 @@ export const DATA = {
     },
   ],
   projects: [
-    {
-      title: "Prabhawatt",
-      href: "https://github.com/ChiragAgg5k/prabhawatt",
-      dates: "Nov 2024 - Present",
-      active: true,
-      description:
-        "Time of Use (TOU) Tariff based Solar and Grid energy management platform along with Web3 based excess energy trading.",
-      technologies: ["Next.js", "Typescript", "LLaMa3.2", "Web Scraping"],
-      links: [
-        {
-          type: "Website",
-          href: "https://prabhawatt.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/ChiragAgg5k/prabhawatt",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/projects/prabhawatt.png",
-    },
-    {
-      title: "Cal Buddy",
-      href: "https://cal-buddy.vercel.app/",
-      dates: "September 2024 - October 2024",
-      active: true,
-      description:
-        "Cal Buddy is a smart calendar assistant that helps you schedule, manage, and chat with your calendar. Boost your productivity with AI-powered task management.",
-      technologies: ["Next.js", "Typescript", "CopilotKit", "Appwrite"],
-      links: [
-        {
-          type: "Website",
-          href: "https://cal-buddy.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/ChiragAgg5k/cal-buddy",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/projects/cal-buddy.png",
-    },
-    {
-      title: "BU News",
-      href: "https://github.com/ChiragAgg5k/bu-news-android",
-      dates: "April 2023 - March 2023",
-      active: true,
-      description:
-        "A news sharing platform targeting university students in particular, aiming to reduce spread of misinformation.",
-      technologies: ["Java", "XML", "Firebase", "Android Studio"],
-      links: [
-        {
-          type: "Play Store",
-          href: "https://play.google.com/store/apps/details?id=com.chiragagg5k.bu_news_android",
-          icon: <Play className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/ChiragAgg5k/bu-news-android",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/projects/bu-news.png",
-    },
-    {
-      title: "Asclepius",
-      href: "https://github.com/ChiragAgg5k/asclepius",
-      dates: "Dec 2022 - Jan 2023",
-      active: true,
-      description:
-        "A desktop application developed in Python and Custom Tkinter to view and request medicines from the Wellness center, check medicine availability, and order medicines directly.",
-      technologies: ["Python", "Tkinter", "SQLite"],
-      links: [
-        {
-          type: "Source",
-          href: "https://github.com/ChiragAgg5k/asclepius",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/projects/asclepius.png",
-    },
+    
+
   ],
   positions: [
     {
@@ -286,25 +205,7 @@ export const DATA = {
         },
       ],
     },
-    {
-      title: "Summer Immersion Participant",
-      dates: "July 2024",
-      location: "FPT University, Da Nang, Vietnam",
-      description:
-        "Participated in a 10-day fully funded Summer Immersion Programme in Vietnam hosted by FPT University, providing rich insights into Vietnamese culture from a entrepreneurship and technological point of view.",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_fpt_university.jpg",
-      links: [
-        {
-          title: "Website",
-          href: "https://international.fpt.edu.vn/",
-        },
-        {
-          title: "Photos",
-          href: "https://www.linkedin.com/posts/bennett-university_bennettuniversity-globalexposure-entrepreneurshipjourney-ugcPost-7232006796473683968-tKMa?utm_source=share&utm_medium=member_desktop",
-        },
-      ],
-    },
+
     {
       title: "Technical Co-Head",
       dates: "August 2023 - May 2024",
@@ -341,42 +242,5 @@ export const DATA = {
       ],
     },
   ],
-  achievements: [
-    {
-      title: "Summer Immersion in Vietnam",
-      dates: "July 2024",
-      location: "FPT University, Da Nang, Vietnam",
-      image: "/achievements/summer-immersion.jpeg",
-    },
-    {
-      title: "Github Constellation",
-      dates: "June 2024",
-      location: "Bangalore",
-      image: "/achievements/github-constellation.jpeg",
-    },
-    {
-      title: "Hackaccino",
-      dates: "April 2024",
-      location: "CSI Bennett University",
-      image: "/achievements/hackaccino.jpeg",
-    },
-    {
-      title: "HackWithDelhi",
-      dates: "April 2024",
-      location: "GL Bajaj Institute of Technology and Management",
-      image: "/achievements/hackwithdelhi.jpeg",
-    },
-    {
-      title: "HackCBS",
-      dates: "November 2023",
-      location: "Shaheed Sukhdev College of Business Studies",
-      image: "/achievements/hackcbs.jpeg",
-    },
-    {
-      title: "Luminous TechnoX Hackathon",
-      dates: "December 2023",
-      location: "Taj City Center, Gurugram",
-      image: "/achievements/luminous.jpg",
-    },
-  ],
+  achievements: [],
 } as const;
