@@ -1,246 +1,223 @@
+import ContactMeForm from "@/components/contact-me-form";
+import BlurFade from "@/components/magicui/blur-fade";
+import BlurFadeText from "@/components/magicui/blur-fade-text";
+import { ProjectCard } from "@/components/project-card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { TracingBeam } from "@/components/ui/tracing-beam";
+import ClientOnly from "@/components/client-only";
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, Play } from "lucide-react";
-import { DiPostgresql } from "react-icons/di";
-import { FaDocker, FaNodeJs, FaPython, FaSpotify } from "react-icons/fa";
-import { SiAppwrite, SiKubernetes } from "react-icons/si";
+import { DATA } from "@/data/site";
 
-export const DATA = {
-  name: "Miguel Ochoa",
-  initials: "CA",
-  url: "https://www.chiragaggarwal.tech",
-  location: "Delhi NCR, India",
-  locationLink: "https://maps.app.goo.gl/Zbzok1mCik445h1C6",
-  description:
-    "I love composing music and I love working with technology, I've built this website!",
-  summary:
-    "I am Miguel Ochoa, I really enjoy playing the piano :D if you want to know more about me, I have put blogs and videos ",
-  avatarUrl: "/me.png",
-  skills: [
-    {
-      name: "Next.js",
-      icon: <Icons.nextjs className="size-3" />,
-    },
-    {
-      name: "Typescript",
-      icon: <Icons.typescript className="size-3" />,
-    },
-    {
-      name: "Node.js",
-      icon: <FaNodeJs className="size-3" />,
-    },
-    {
-      name: "Python",
-      icon: <FaPython className="size-3" />,
-    },
-    {
-      name: "Postgres",
-      icon: <DiPostgresql className="size-3" />,
-    },
-    {
-      name: "Docker",
-      icon: <FaDocker className="size-3" />,
-    },
-    {
-      name: "Kubernetes",
-      icon: <SiKubernetes className="size-3" />,
-    },
-    {
-      name: "Appwrite",
-      icon: <SiAppwrite className="size-3" />,
-    },
-  ],
-  navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
-  ],
-  contact: {
-    email: "chiragaggarwal5k@gmail.com",
-    tel: "+91 9667685415",
-    social: {
-      GitHub: {
-        name: "GitHub",
-        url: "https://github.com/ChiragAgg5k",
-        icon: Icons.github,
+const BLUR_FADE_DELAY = 0.04;
 
-        navbar: true,
-      },
-      LinkedIn: {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/in/chiragagg5k/",
-        icon: Icons.linkedin,
-
-        navbar: true,
-      },
-      X: {
-        name: "X",
-        url: "https://x.com/ChiragAgg5k",
-        icon: Icons.x,
-
-        navbar: true,
-      },
-      email: {
-        name: "Send Email",
-        url: "mailto:chiragaggarwal5k@gmail.com",
-        icon: Icons.email,
-
-        navbar: false,
-      },
-    },
+// ADD YOUR MP4 FILES HERE
+const PIANO_SHORTS = [
+  {
+    url: "/Lilly.mp4", // Replace with your video path
+    title: "Piano Short 1"
   },
+  {
+    url: "/Chopin.mp4", // Replace with your video path
+    title: "Piano Short 2"
+  },
+  {
+    url: "/Richard.mp4", // Replace with your video path
+    title: "Piano Short 3"
+  }
+];
 
-  work: [
-    {
-      company: "Appwrite",
-      href: "https://appwrite.io/",
-      badges: [],
-      location: "Remote",
-      title: "Platform Engineer",
-      logoUrl: "/work-experience/appwrite.png",
-      start: "December 2024",
-      end: "Present",
-      description: [
-        "- Joined Appwrite as a **full-time** Platform Engineer in June, 2025.",
-        "---",
-        "- Started working with Appwrite as an **Engineering Intern**.",
-        "- Took ownership of the project **Synapse**, an SDK for remote serverless operating systems.",
-        "- Worked on over **200+ PRs** in the OSS repo, along with many other in private repos.",
-        "- Worked on Major features like Figma OAuth, Image Transformations, Types generation in CLI etc.",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://appwrite.io/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-    },
-    {
-      company: "Skillarena",
-      href: "https://skillarena.in/",
-      badges: [],
-      location: "Remote",
-      title: "Backend Developer",
-      logoUrl: "/work-experience/skillarena.png",
-      start: "July 2024",
-      end: "September 2024",
-      description: [
-        "- Improved and maintained core backend systems written in the **MERN** stack",
-        "- Implemented a **real-time chat application** backend utilizing WebSockets and FastAPI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://skillarena.in/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Letter of Recommendation",
-          href: "https://drive.google.com/file/d/1ONCudngptfuLZuR7hjSinbvVSr7fEnbd/view?usp=sharing",
-          icon: <Icons.email className="size-3" />,
-        },
-      ],
-    },
-    {
-      company: "Clearmind AI",
-      badges: [],
-      href: "https://www.clearmind.plus/",
-      location: "Remote",
-      title: "Fullstack Developer",
-      logoUrl: "/work-experience/clearmind.png",
-      start: "October 2023",
-      end: "December 2023",
-      description: [
-        "- Implemented **user feedback suggestions** such as more personalized recommendations, memory history etc.",
-        "- Integrated a seamless payment gateway using **Stripe**",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://www.clearmind.plus/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Letter of Recommendation",
-          href: "https://drive.google.com/file/d/1cgXwtu__St6bJzZNiq7SId0kWw5UVdPc/view?usp=sharing",
-          icon: <Icons.email className="size-3" />,
-        },
-      ],
-    },
-  ],
-  education: [
-    {
-      school: "Bennett University",
-      href: "https://bennett.edu.in/",
-      degree:
-        "Bachelor's of Technology in Computer Science Engineering | 9.71 CGPA",
-      logoUrl: "/bennett.png",
-      start: "2022",
-      end: "2026",
-    },
-    {
-      school: "Bharti Public School",
-      href: "https://www.bps.edu.in/",
-      degree: "Senior Secondary (CBSE) | X - 91.2% | XII - 89.5%",
-      logoUrl: "/bharti.jpg",
-      start: "2010",
-      end: "2022",
-    },
-  ],
-  projects: [
-    
+// Placeholder list for full-length cover videos you will add later
+const FULL_COVERS = [
+  {
+    url: "/Lilly.mp4",
+    title: "Full Cover 1",
+    song: "Song Title 1",
+    thumbnailTime: 2,
+  },
+  {
+    url: "/Chopin.mp4",
+    title: "Full Cover 2",
+    song: "Song Title 2",
+    thumbnailTime: 7,
+  },
+  {
+    url: "/Richard.mp4",
+    title: "Full Cover 2",
+    song: "Song Title 2",
+    thumbnailTime: 2,
+  },
+];
 
-  ],
-  positions: [
-    {
-      title: "Content Writer",
-      dates: "July 2024 - Present",
-      location: "GeeksForGeeks",
-      description:
-        "I like to write technical articles for GeeksForGeeks in my past time. Let's me be updated with various kinds of technologies.",
-      image: "/gfg.png",
-      links: [
-        {
-          title: "Contributions",
-          href: "https://www.geeksforgeeks.org/user/chiragaggarwal5k/contributions/",
-        },
-      ],
-    },
+export default function Page() {
+  return (
+    <ClientOnly>
+      <TracingBeam className="px-6">
+        <main className="flex items-center justify-center flex-col min-h-[100dvh] space-y-10">
+          {/* 1. Hi, I'm Miguel */}
+          <section id="hero">
+            <div className="mx-auto w-full max-w-2xl space-y-8">
+              <div className="gap-2 flex justify-between">
+                <div className="flex-col flex flex-1 space-y-1.5">
+                  <h1>
+                    <BlurFadeText
+                      delay={BLUR_FADE_DELAY}
+                      className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                      yOffset={8}
+                      text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
+                    />
+                  </h1>
+                  <BlurFade delay={BLUR_FADE_DELAY}>
+                    <div className="max-w-[600px] text-sm md:text-base">
+                      I taught myself how to play the piano at 17. Five years on, what started as a hobby turned into an <strong>obsession</strong>, something I know I want to pursue for the <strong>rest of my life</strong>.
+                    </div>
+                  </BlurFade>
+                </div>
+                <BlurFade delay={BLUR_FADE_DELAY}>
+                  <Avatar className="size-36 border hover:shadow-lg hover:shadow-foreground/20 transition-all duration-300 ease-in-out">
+                    <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                    <AvatarFallback>{DATA.initials}</AvatarFallback>
+                  </Avatar>
+                </BlurFade>
+              </div>
+            </div>
+          </section>
 
-    {
-      title: "Technical Co-Head",
-      dates: "August 2023 - May 2024",
-      location: "Computer Society of India, Bennett University",
-      description:
-        "As the technical co-head of the CSI chapter of my university, I was responsible for organizing various events, workshops, and hackathons. I also mentored and guided students in their technical journey.",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGnicMMBfXdQJrZy9RvzmnhzvVw1bgLTs_qA&s",
-      links: [
-        { title: "Website", href: "https://csiindia.org/" },
-        {
-          title: "LinkedIn",
-          href: "https://www.linkedin.com/company/csi-india/",
-        },
-        {
-          title: "Welcome Letter",
-          href: "https://www.linkedin.com/posts/chiragagg5k_newrole-bennettuniversity-technology-activity-7097467074863636480-M1q6",
-        },
-      ],
-    },
-    {
-      title: "Rearch Content Management",
-      dates: "September 2022 - May 2023",
-      location: "Bennett Undergraduate Research Society (BURS)",
-      description:
-        "The research society peaked my interest in the field of research, allowing me to be guided by seniors to work on various research related projects as well as organizing events like Rescon.",
-      image: "/burs.png",
-      links: [
-        { title: "Website", href: "https://www.burs.bennett.edu.in/" },
-        {
-          title: "LinkedIn",
-          href: "https://www.linkedin.com/company/buresearchsociety/posts/?feedView=all/",
-        },
-      ],
-    },
-  ],
-  achievements: [],
-} as const;
+          
+
+          {/* 3. Full Covers Published */}
+          <section id="full-covers">
+            <div className="space-y-12 w-full py-12">
+              <BlurFade delay={BLUR_FADE_DELAY * 12}>
+                <div className="max-w-[900px] mx-auto">
+                  <h2 className="text-3xl font-bold tracking-tighter mb-6 text-center">
+                    Full Covers Published
+                  </h2>
+                  <p className="text-muted-foreground mx-auto max-w-[800px] text-center mb-4">
+                    Placeholder list for full-length cover videos — replace these with your uploads.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {FULL_COVERS.map((video, idx) => (
+                      <BlurFade
+                        key={video.title}
+                        delay={BLUR_FADE_DELAY * 13 + idx * 0.05}
+                      >
+                        <div className="relative aspect-video rounded-xl overflow-hidden bg-muted">
+                          <video
+                            className="w-full h-full object-cover"
+                            controls
+                            preload="metadata"
+                            poster={`${video.url}#t=${video.thumbnailTime}`}
+                          >
+                            <source src={`${video.url}#t=${video.thumbnailTime}`} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </BlurFade>
+                    ))}
+                  </div>
+                </div>
+              </BlurFade>
+            </div>
+          </section>
+
+          {/* 4. My Music */}
+          <section id="music">
+            <div className="space-y-12 w-full py-12">
+              <BlurFade delay={BLUR_FADE_DELAY * 14}>
+                <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                  <div className="space-y-2">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                      My Music
+                    </h2>
+                    <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                      Check out some of my piano performances
+                    </p>
+                  </div>
+                </div>
+              </BlurFade>
+
+              {/* Piano Shorts Section */}
+              <BlurFade delay={BLUR_FADE_DELAY * 12}>
+                <div className="max-w-[900px] mx-auto space-y-4">
+                  <h3 className="text-xl font-semibold text-center text-muted-foreground">
+                    Music Videos
+                  </h3>
+                  <div className="grid grid-cols-3 gap-4">
+                    {PIANO_SHORTS.map((video, idx) => (
+                      <div
+                        key={video.title}
+                        className="relative aspect-[9/16] rounded-xl overflow-hidden bg-black"
+                      >
+                        <video
+                          className="w-full h-full object-cover"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="auto"
+                        >
+                          <source src={video.url} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </BlurFade>
+
+              {/* Spotify Playlist */}
+              <BlurFade delay={BLUR_FADE_DELAY * 15}>
+                <div className="max-w-[800px] mx-auto">
+                  <iframe
+                    data-testid="embed-iframe"
+                    style={{ borderRadius: "12px" }}
+                    src="https://open.spotify.com/embed/playlist/4stJB7IuaZGk1SBhhrkiRN?utm_source=generator&theme=0"
+                    width="100%"
+                    height="352"
+                    frameBorder="0"
+                    allowFullScreen
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                  />
+                </div>
+              </BlurFade>
+            </div>
+          </section>
+
+          <section id="contact">
+            <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
+              <BlurFade delay={BLUR_FADE_DELAY * 17}>
+                <div className="space-y-0">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                    Get in Touch
+                  </h2>
+                  <ContactMeForm />
+                  <p className="mx-auto max-w-[600px] text-muted-foreground text-sm/relaxed md:text-base/relaxed">
+                    Or just want to have a casual chat? You can shoot me a DM on {" "}
+                    <a
+                      href={DATA.contact.social.Instagram.url}
+                      className="text-foreground hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Instagram
+                    </a>{" "}
+                    or{" "}
+                    <a
+                      href={DATA.contact.social.TikTok.url}
+                      className="text-foreground hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      TikTok
+                    </a>.
+                  </p>
+                </div>
+              </BlurFade>
+            </div>
+          </section>
+        </main>
+      </TracingBeam>
+    </ClientOnly>
+  );
+}

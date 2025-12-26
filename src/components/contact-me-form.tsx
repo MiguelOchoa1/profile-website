@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -21,6 +22,7 @@ const formSchema = z.object({
 });
 
 export default function ContactMeForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -28,45 +30,63 @@ export default function ContactMeForm() {
       message: "",
     },
   });
+  // Use the environment variable when available, otherwise fall back to the provided endpoint
+  const FORM_SPREE_URL = process.env.NEXT_PUBLIC_FORM_SPREE_URL ?? "https://formspree.io/f/mvgknpee";
 
-  const onSubmit = () => {
-    const formElement = document.querySelector("form") as HTMLFormElement;
-    formElement?.submit();
-  };
+  if (!process.env.NEXT_PUBLIC_FORM_SPREE_URL) {
+    // Dev-time notice only
+    console.warn("NEXT_PUBLIC_FORM_SPREE_URL not set; using default Formspree endpoint: https://formspree.io/f/mvgknpee");
+  }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    form.handleSubmit(onSubmit)(event);
-
     const errors = form.formState.errors;
-
     if (errors.email || errors.message) {
       toast.error("You forgot something!", {
         description: `Looks like you forgot to enter a valid ${
           errors.email ? "email" : "message"
-        }.`,
+        }.
+      `,
       });
+      return;
     }
-  };
 
-  if (!process.env.NEXT_PUBLIC_FORM_SPREE_URL) {
-    return (
-      <div className="py-6">
-        <p className="text-sm border border-red-500 rounded-md p-4">
-          Formspree is not configured. Please check the{" "}
-          <span className="font-bold underline">.env.local</span> file.
-        </p>
-      </div>
-    );
-  }
+    form.handleSubmit(async (values) => {
+      setIsSubmitting(true);
+      try {
+        const res = await fetch(FORM_SPREE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(values),
+        });
+
+        if (!res.ok) {
+          throw new Error("Form submission failed");
+        }
+
+        toast.success("Submitted to Miguel", {
+          description: "Thanks for reaching out! I'll get back to you soon.",
+        });
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        toast.error("Submission failed", {
+          description: "Please try again or email me directly.",
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
+    })(event);
+  };
 
   return (
     <Form {...form}>
       <form
         onSubmit={handleSubmit}
-        action={process.env.NEXT_PUBLIC_FORM_SPREE_URL}
-        method="POST"
         className="space-y-8 max-w-3xl mx-auto py-10"
       >
         <FormField
@@ -78,7 +98,7 @@ export default function ContactMeForm() {
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="example-email@gmail.com"
+                    placeholder="Email"
                     type="email"
                     {...field}
                   />
@@ -98,7 +118,7 @@ export default function ContactMeForm() {
                 <FormControl>
                   <Textarea
                     rows={5}
-                    placeholder="Hi! I really like your work and want to discuss some things...."
+                    placeholder="Message"
                     className="resize-none"
                     {...field}
                   />
@@ -110,8 +130,8 @@ export default function ContactMeForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" size="lg">
-          Submit
+        <Button type="submit" size="lg" disabled={isSubmitting}>
+          {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
       </form>
     </Form>

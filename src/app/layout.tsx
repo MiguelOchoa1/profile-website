@@ -3,7 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { PostHogProvider } from "@/components/posthog-provider";
-import { DATA } from "@/data/resume";
+import { DATA } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";

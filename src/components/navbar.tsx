@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { DATA } from "@/data/resume";
+import { DATA } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
