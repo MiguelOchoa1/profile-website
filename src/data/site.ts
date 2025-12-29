@@ -6,7 +6,7 @@ export const DATA = {
     "I taught myself how to play the piano at 17. Five years on, what started as a hobby turned into an obsession, something I know I want to pursue for the rest of my life.",
   summary: "I am Miguel Ochoa, I really enjoy playing the piano :D",
   url: "https://www.chiragaggarwal.tech",
-  avatarUrl: "/me.png",
+  avatarUrl: "/cover.jpg",
   initials: "MO",
   navbar: [
     { href: "/", label: "Home", icon: Icons.globe },

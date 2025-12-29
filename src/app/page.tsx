@@ -4,7 +4,6 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import ClientOnly from "@/components/client-only";
 import { DATA } from "@/data/site";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -18,8 +17,7 @@ const FULL_COVERS = [
 
 export default function Page() {
   return (
-    <ClientOnly>
-      <TracingBeam className="px-6">
+    <TracingBeam className="px-6">
         <main className="flex items-center justify-center flex-col min-h-[100dvh] space-y-10">
           <section id="hero">
             <div className="mx-auto w-full max-w-2xl space-y-8">
@@ -150,6 +148,5 @@ export default function Page() {
           </section>
         </main>
       </TracingBeam>
-    </ClientOnly>
   );
 }

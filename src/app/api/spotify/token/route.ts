@@ -48,7 +48,4 @@ export async function POST(request: Request) {
     }
     return NextResponse.json({ error: "Failed to fetch token", details: error.message }, { status: 500 });
   }
-
-  const tokenJson = await tokenRes.json();
-  return NextResponse.json(tokenJson);
 }

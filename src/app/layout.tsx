@@ -18,8 +18,9 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   icons: {
-    icon: "/me.png",
-    apple: "/me.png",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+    shortcut: "/favicon.png",
   },
   title: {
     default: `${DATA.name}`,
