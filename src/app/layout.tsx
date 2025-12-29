@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${DATA.name}`,
     description: DATA.description,
-    images: ["/preview.png"],
+    images: ["/pee.jpeg"],
     url: "https://idkmigueltbh.vercel.app",
     siteName: `${DATA.name}'s Portfolio`,
     locale: "en_US",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     title: `${DATA.name}`,
     card: "summary_large_image",
-    images: [`${DATA.url}/preview.png`],
+    images: [`${DATA.url}/pee.jpeg`],
   },
   alternates: {
     canonical: `${DATA.url}`,
