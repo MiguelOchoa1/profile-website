@@ -18,14 +18,36 @@ export async function POST(request: Request) {
     redirect_uri: redirectUri,
   });
 
-  const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
-    headers: {
-      Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString("base64")}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: params.toString(),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
+  try {
+    const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString("base64")}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: params.toString(),
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeout);
+
+    if (!tokenRes.ok) {
+      const error = await tokenRes.text();
+      return NextResponse.json({ error: error || "Failed to get token" }, { status: tokenRes.status });
+    }
+
+    const tokenJson = await tokenRes.json();
+    return NextResponse.json(tokenJson);
+  } catch (error: any) {
+    clearTimeout(timeout);
+    if (error.name === "AbortError") {
+      return NextResponse.json({ error: "Request timeout - Spotify API took too long to respond" }, { status: 504 });
+    }
+    return NextResponse.json({ error: "Failed to fetch token", details: error.message }, { status: 500 });
+  }
 
   const tokenJson = await tokenRes.json();
   return NextResponse.json(tokenJson);
