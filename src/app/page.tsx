@@ -10,7 +10,7 @@ const BLUR_FADE_DELAY = 0.04;
 
 // Placeholder list for full-length cover videos — replace with your uploads
 const FULL_COVERS = [
-  { url: "/Chopin.mp4", title: "Chopin - Nocturne in C# Minor", song: "Nocturne in C Sharp Minor", thumbnailTime: 7 },
+  { url: "/Chopin.mp4", title: "Frédéric Chopin - Nocturne in C# Minor", song: "Nocturne in C Sharp Minor", thumbnailTime: 7 },
   { url: "/Richard.mp4", title: "Richard Clayderman - Love is Blue", song: "Richard Clayderman X Chopin", thumbnailTime: 2 },
   { url: "/Lilly.mp4", title: "The Promise Neverland - Isabella's Lullaby", song: "Isabella's Lullaby", thumbnailTime: 2 },
 ];
@@ -28,7 +28,7 @@ export default function Page() {
                       delay={BLUR_FADE_DELAY}
                       className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                       yOffset={8}
-                      text={"Hi, I\u0027m Miguel"}
+                      text={`Hi, I'm Miguel`}
                     />
                   </h1>
                   <BlurFade delay={BLUR_FADE_DELAY}>
@@ -96,7 +96,7 @@ export default function Page() {
                         delay={BLUR_FADE_DELAY * 14 + idx * 0.05}
                       >
                         <div className="space-y-2">
-                          <h3 className="text-[10px] md:text-xs font-normal text-muted-foreground text-center">
+                          <h3 className="text-base md:text-lg font-medium text-muted-foreground text-center">
                             {video.title}
                           </h3>
                           <div className="relative aspect-video rounded-xl overflow-hidden bg-muted">
@@ -109,7 +109,6 @@ export default function Page() {
                               <source src={`${video.url}#t=${video.thumbnailTime}`} type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
-                            <div className="pointer-events-none absolute inset-0 rounded-xl border border-black/80 z-10" />
                           </div>
                         </div>
                       </BlurFade>
@@ -129,7 +128,7 @@ export default function Page() {
                   </h2>
                   <ContactMeForm />
                   <p className="mx-auto max-w-[600px] text-muted-foreground text-sm/relaxed md:text-base/relaxed">
-                    If you&apos;d like to collaborate, reach out to me through {" "}
+                    If you'd like to collaborate, reach out to me through  {" "}
                     <a
                       href={DATA.contact.social.Instagram.url}
                       className="text-foreground hover:underline"
