@@ -1,7 +1,7 @@
 import { Icons } from "@/components/icons";
 
 export const DATA = {
-  name: "Miguel Ochoa",
+  name: "idkmigueltbh",
   description:
     "I taught myself how to play the piano at 17. Five years on, what started as a hobby turned into an obsession, something I know I want to pursue for the rest of my life.",
   summary: "I am Miguel Ochoa, I really enjoy playing the piano :D",
