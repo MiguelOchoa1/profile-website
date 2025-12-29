@@ -83,7 +83,7 @@ export default function Page() {
             <div className="space-y-12 w-full py-12">
               <BlurFade delay={BLUR_FADE_DELAY * 13}>
                 <div className="max-w-[900px] mx-auto">
-                  <h2 className="text-3xl font-bold tracking-tighter mb-6 text-center">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-6 text-center">
                     Full Covers Published
                   </h2>
                   <p className="text-muted-foreground mx-auto max-w-[800px] text-center mb-4">
