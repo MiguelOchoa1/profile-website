@@ -13,7 +13,7 @@ interface BlogPostItemProps {
   title: string;
   href?: string;
   slug?: string;
-  publishedAt: string;
+  publishedAt?: string;
   delay?: number;
 }
 
@@ -55,7 +55,9 @@ export default function BlogPostItem({
             )}
           </button> */}
       </div>
-      <p className="text-sm text-muted-foreground">{formatDate(publishedAt)}</p>
+      {publishedAt && (
+        <p className="text-sm text-muted-foreground">{formatDate(publishedAt)}</p>
+      )}
     </div>
   );
 }

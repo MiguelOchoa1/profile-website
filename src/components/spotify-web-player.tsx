@@ -56,7 +56,7 @@ export default function SpotifyWebPlayer() {
       // cleanup
       if (window.Spotify && player) player.disconnect();
     };
-  }, [token]);
+  }, [token, player]);
 
   const transferPlayback = async () => {
     if (!deviceId || !token) return;
