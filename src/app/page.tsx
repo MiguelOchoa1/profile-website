@@ -128,7 +128,7 @@ export default function Page() {
                   </h2>
                   <ContactMeForm />
                   <p className="mx-auto max-w-[600px] text-muted-foreground text-sm/relaxed md:text-base/relaxed">
-                    If you'd like to collaborate, reach out to me through  {" "}
+                    If you&apos;d like to collaborate, reach out to me through  {" "}
                     <a
                       href={DATA.contact.social.Instagram.url}
                       className="text-foreground hover:underline"
