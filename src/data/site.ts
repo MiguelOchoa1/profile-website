@@ -9,7 +9,7 @@ export const DATA = {
   avatarUrl: "/cover.jpg",
   initials: "MO",
   navbar: [
-    { href: "/", label: "Home", icon: Icons.globe },
+    { href: "/job", label: "Home", icon: Icons.globe },
   ],
   contact: {
     email: "hello@example.com",
@@ -24,16 +24,33 @@ export const DATA = {
         navbar: true,
         icon: Icons.youtube,
       },
+      GitHub: {
+        url: "https://github.com/MiguelOchoa1",
+        navbar: true,
+        icon: Icons.github,
+      },
+      LinkedIn: {
+        url: "https://www.linkedin.com/in/miguelochoatech/",
+        navbar: true,
+        icon: Icons.linkedin,
+      },
       TikTok: {
         url: "https://www.tiktok.com/@idkmigueltbh?lang=en",
         navbar: true,
         icon: Icons.tiktok,
       },
+      Devpost: {
+        url: "https://devpost.com/ochoas2003",
+        navbar: true,
+        icon: Icons.devpost,
+      },
       Instagram: {
         url: "https://www.instagram.com/idkmigueltbh/",
+        altUrl: "https://www.instagram.com/techwithmiguel/?hl=en",
         navbar: true,
         icon: Icons.instagram,
       },
+      
     },
   },
  

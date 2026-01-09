@@ -1,3 +1,4 @@
+"use client";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
@@ -9,8 +10,12 @@ import {
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const homeVisible = new Set(["Spotify", "YouTube", "Instagram", "TikTok"]);
+  const hideOnJob = new Set(["Spotify", "YouTube", "TikTok"]);
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
       <div className="fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
@@ -20,13 +25,14 @@ export default function Navbar() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <a
-                  href={item.href}
+                  href={pathname?.startsWith("/job") && item.label === "Home" ? "/" : item.href}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
-                    "size-12",
+                    "size-16 animate-shake-zoom",
                   )}
+                  style={{ animationDelay: "1.3s", animation: "shakeZoom 1s cubic-bezier(0.34, 1.56, 0.64, 1) 1.3s" }}
                 >
-                  <item.icon className="size-4" />
+                  <item.icon className={cn("size-6", "text-blue-600", "animate-continuous-glow-strong")} />
                 </a>
               </TooltipTrigger>
               <TooltipContent>
@@ -37,29 +43,52 @@ export default function Navbar() {
         ))}
         <Separator orientation="vertical" className="h-full" />
         {Object.entries(DATA.contact.social)
-          .filter(([_, social]) => social.navbar)
-          .map(([name, social]) => (
-            <DockIcon key={name}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a
-                    href={social.url}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12",
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <social.icon className="size-4" />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{name}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
+          .filter(([name, social]) => {
+            if (!social.navbar) return false;
+            if (pathname === "/") return homeVisible.has(name);
+            if (pathname?.startsWith("/job")) return !hideOnJob.has(name);
+            return true;
+          })
+          .map(([name, social], index) => {
+            const getIconColor = (iconName: string) => {
+              const colorMap: { [key: string]: string } = {
+                "Spotify": "text-green-500",
+                "YouTube": "text-red-500",
+                "TikTok": "text-black dark:text-white",
+                "GitHub": "text-black dark:text-white",
+                "LinkedIn": "text-blue-600",
+                "Devpost": "text-teal-600",
+                "Instagram": "text-pink-500",
+                "Resume": "text-blue-500",
+              };
+              return colorMap[iconName] || "text-foreground";
+            };
+
+            return (
+              <DockIcon key={name}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a
+                      href={pathname?.startsWith("/job") && name === "Instagram" ? ((social as any).altUrl || social.url) : social.url}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-16",
+                        "animate-jump",
+                      )}
+                      style={{ animationDelay: `${index * 0.15}s` }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <social.icon className={cn("size-6", getIconColor(name))} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            );
+          })}
         <Separator orientation="vertical" className="h-full py-2" />
         <DockIcon>
           <Tooltip>
