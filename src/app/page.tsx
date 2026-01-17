@@ -139,12 +139,12 @@ export default function Page() {
                     </a>{" "}
                     or{" "}
                     <a
-                      href={DATA.contact.social.LinkedIn.url}
+                      href={DATA.contact.social.TikTok.url}
                       className="text-foreground hover:underline"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      LinkedIn
+                      TikTok                     
                     </a>.
                   </p>
                 </div>

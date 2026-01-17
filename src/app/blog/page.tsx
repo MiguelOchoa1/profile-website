@@ -3,7 +3,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { posts } from "@/data/posts";
 
 export const metadata = {
-  title: "Blogs - My Content Related Work",
+  title: "My Articles - My Content Related Work",
   description:
     "Explore a curated list of my content-related work, including articles, research papers, and journals published across various platforms. Discover insights and knowledge shared through my writing.",
   keywords:
@@ -22,10 +22,9 @@ export default async function BlogPage() {
     <section className="mx-8">
       <BlurFade delay={BLUR_FADE_DELAY}>
         <h1 className="font-medium text-3xl font-semibold mb-8 tracking-tighter">
-          Blogs
+          My Articles
         </h1>
         <p className="mb-8 text-muted-foreground text-sm">
-          Here you can find some of my blog posts about software development, technology, and my experiences.
         </p>
       </BlurFade>
       <div className="flex flex-col gap-4">

@@ -1,19 +1,23 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, Play } from "lucide-react";
+import { HomeIcon, NotebookIcon, Play, FileText } from "lucide-react";
 import { DiPostgresql } from "react-icons/di";
-import { FaDocker, FaNodeJs, FaPython } from "react-icons/fa";
+import { FaDocker, FaNodeJs, FaPython, FaTerminal, FaJsSquare, FaHtml5, FaReact, FaUsers } from "react-icons/fa";
+import { GiShield } from "react-icons/gi";
 import { SiAppwrite, SiKubernetes } from "react-icons/si";
 
 export const DATA = {
-  name: "Miguel A. Ochoa",
+  name: "Miguel!",
   initials: "MO",
   url: "https://idkmigueltbh.vercel.app",
   location: "Miami, Florida",
   locationLink: "https://maps.app.goo.gl/miami",
   description:
-    "Cybersecurity enthusiast and IT professional specializing in network administration, system security, and enterprise infrastructure.",
-  summary:
-    "I am a passionate cybersecurity professional with a B.S. in Cyber Security from Florida International University (Honors College). Currently serving as a Network Administrator at USpharmaltd, I specialize in implementing enterprise security solutions, managing complex network infrastructure, and automating critical IT operations. With expertise in Active Directory, EDR solutions like CrowdStrike Falcon, and enterprise firewalls, I focus on protecting organizational assets and reducing security risks.",
+    "Cybersecurity professional specializing in network security, endpoint protection, and enterprise infrastructure management.",
+  summary: (
+    <>
+      I graduated with my bachelor&apos;s degree from <a href="https://honors.fiu.edu/" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-primary"><strong><span className="text-[#B6862C]">Florida International University (Honors)</span></strong></a> with a B.S. in Cybersecurity and an <a href="https://cybersecurity.fiu.edu/academics/undergraduate-certificate/" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-primary"><strong>Undergraduate Certificate in Cybersecurity Intelligence & Information Policy</strong></a>, achieving a 3.58 GPA. With expertise in Active Directory, EDR solutions like CrowdStrike Falcon, and enterprise firewalls, I focus on protecting organizational assets and reducing security risks.
+    </>
+  ),
   avatarUrl: "/cover.jpg",
   skills: [
     {
@@ -22,36 +26,45 @@ export const DATA = {
     },
     {
       name: "Bash",
-      icon: <FaPython className="size-3" />,
+      icon: <FaTerminal className="size-3" />,
     },
     {
       name: "SQL",
       icon: <DiPostgresql className="size-3" />,
     },
     {
-      name: "Active Directory",
-      icon: <FaPython className="size-3" />,
-    },
-    {
-      name: "CrowdStrike Falcon",
-      icon: <FaPython className="size-3" />,
-    },
-    {
-      name: "Palo Alto Firewalls",
-      icon: <FaPython className="size-3" />,
-    },
-    {
-      name: "vSphere",
-      icon: <FaPython className="size-3" />,
-    },
-    {
       name: "JavaScript",
-      icon: <FaPython className="size-3" />,
+      icon: <FaJsSquare className="size-3" />,
+    },
+    {
+      name: "HTML/CSS",
+      icon: <FaHtml5 className="size-3" />,
     },
     {
       name: "React",
-      icon: <FaPython className="size-3" />,
+      icon: <FaReact className="size-3" />,
     },
+    {
+      name: "SonicWall NSA",
+      icon: <GiShield className="size-3" />,
+    },
+    {
+      name: "CrowdStrike Falcon EDR",
+      icon: <GiShield className="size-3" />,
+    },
+    {
+      name: "Incident Response",
+      icon: <GiShield className="size-3" />,
+    },
+    {
+      name: "Vulnerability Assessment",
+      icon: <GiShield className="size-3" />,
+    },
+    {
+      name: "Active Directory (IAM)",
+      icon: <FaUsers className="size-3" />,
+    },
+
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -100,13 +113,7 @@ export const DATA = {
         " Established email security controls through Exchange Admin Center with Safe Links, Safe Attachments, and anti-malware policies",
         " Managed lifecycle maintenance of 20+ enterprise servers with security assessments and critical patches",
       ],
-      links: [
-        {
-          type: "Website",
-          href: "https://usphermail.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
+      links: [],
     },
     {
       company: "USpharmaltd",
@@ -124,13 +131,7 @@ export const DATA = {
         " Queried and managed data within SQL Server 2008 R2, writing SQL statements for database maintenance and troubleshooting",
         " Managed lifecycle maintenance of 20+ enterprise servers performing security assessments, applying critical patches, and verifying backups",
       ],
-      links: [
-        {
-          type: "Website",
-          href: "https://usphermail.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
+      links: [],
     },
   ],
   education: [
@@ -139,65 +140,129 @@ export const DATA = {
       href: "https://www.fiu.edu/",
       degree:
         "B.S. Cyber Security (Honors College) | Undergraduate Certificate in Cybersecurity Intelligence & Information Policy | GPA 3.56",
-      logoUrl: "/FIU%20LOGO.jpg",
-      start: "Dec 2025"
+      logoUrl: "/FIU.jpeg",
+      start: "2023",
+      end: "2025",
+    },
+    {
+      school: "Miami Dade College",
+      href: "https://www.mdc.edu/",
+      degree: "AA in Computer Science",
+      logoUrl: "/miami.jpeg",
+      start: "2021",
+      end: "2023",
+    },
+  ],
+  certifications: [
+    {
+      title: "Cybersecurity Secure The Future",
+      issuer: "Palo Alto Networks",
+      issued: "Dec 2024",
+      credentialId: "SYHLeGarjh",
+      href: "https://paloaltonetworksacademy.net/mod/customcert/verify_certificate.php",
+      logoUrl: "/paloalto.jpeg",
+    },
+    {
+      title: "CompTIA Security+ ce Certification",
+      issuer: "CompTIA",
+      issued: "Jul 2024",
+      expires: "Jul 2027",
+      href: "https://www.credly.com/badges/e26fc986-2795-4472-a71d-6defada40a8e/linked_in_profile",
+      logoUrl: "/sec.jpeg",
+    },
+    {
+      title: "Understanding Emotional Intelligence",
+      issuer: "Florida International University",
+      issued: "Aug 2023",
+      href: "https://www.credly.com/badges/8b6a4524-8c6f-4868-9c3f-b57ce39e6806/linked_in_profile",
+      logoUrl: "/FIU.jpeg",
     },
   ],
   projects: [
     {
+      title: "Intelligent Poker League",
+      href: "https://github.com/npastrami/IntelligentPokerLeague",
+      dates: "September 2025",
+      active: true,
+      description:
+        "Winner of Wolfram Prize at ShellHacks 2025. Built a poker platform that allows and encourages players to use advanced AI and Game Theory technology, reducing cheating on other sites by providing an outlet for technologically advanced players.",
+      technologies: ["Django", "React", "Python", "PostgreSQL", "Wolfram", "TailwindCSS", "Git"],
+      links: [
+        {
+          type: "Devpost",
+          href: "https://devpost.com/software/intelligent-poker-league",
+          icon: Icons.devpost,
+        },
+        {
+          type: "Github",
+          href: "https://github.com/npastrami/IntelligentPokerLeague",
+          icon: Icons.github,
+        },
+      ],
+      image: "/Poker.png",
+    },
+    {
+      title: "Level-Up NFT Marketplace",
+      href: "https://github.com/Level-Up-Miami/level-up-miami",
+      dates: "September 30, 2024",
+      active: true,
+      description:
+        "Winner ofEthMiami Challenge at FIU ShellHacks 2024. Built an open-source Web3 NFT marketplace where NFTs can be 'leveled up' through physical or digital engagement with creators, events, and brands, unlocking perks and rewards across realities.",
+      technologies: ["TypeScript", "React", "Go", "Solidity", "Ethereum", "PostgreSQL", "Web3", "Hardhat"],
+      links: [
+        {
+          type: "Devpost",
+          href: "https://devpost.com/software/levelup-m95ou8",
+          icon: Icons.devpost,
+        },
+        {
+          type: "Github",
+          href: "https://github.com/Level-Up-Miami/level-up-miami",
+          icon: Icons.github,
+        },
+      ],
+      image: "/up.png",
+    },
+    {
       title: "Palo Alto Security Strategy Research",
-      href: "https://github.com",
+      href: "/OchoaSTFPresentation.pdf",
       dates: "January 13, 2025",
       active: true,
       description:
         "Academic research project collaborating on leveraging Palo Alto's proprietary technologies (XSOAR, Prisma, etc.) to design defensive strategies for the energy sector, strengthening resilience against evolving cyber threats.",
-      technologies: ["Palo Alto", "Security Research", "XSOAR", "Prisma"],
+      technologies: ["Palo Alto", "Security Research"],
       links: [
         {
-          type: "Source",
-          href: "https://github.com",
-          icon: <Icons.github className="size-3" />,
+          type: "Presentation",
+          href: "/OchoaSTFPresentation.pdf",
+          icon: FileText,
+        },
+        {
+          type: "Report",
+          href: "/OchoaSTFReport.pdf",
+          icon: FileText,
         },
       ],
-      image: "/projects/cal-buddy.png",
+      image: "/alto.png",
     },
     {
-      title: "Wolfram & Decentralized Asset Management Platform",
-      href: "https://github.com",
-      dates: "September 29, 2025",
+      title: "2FA Authenticator",
+      href: "https://github.com/MiguelOchoa1/2FA",
+      dates: "",
       active: true,
       description:
-        "Hackathon 2024-2025 winning project. Built intelligent gaming and blockchain solutions using React, Wolfram integration, and Ethereum smart contracts. Developed Monte Carlo-based simulations for dynamic win prediction and utilized SpeedRunEthereum and Scaffold ETH to enhance DeFi accessibility.",
-      technologies: ["React", "Blockchain", "Ethereum", "Monte Carlo Simulation", "Wolfram"],
+        "A secure two-factor authentication app that generates time-based one-time passwords (TOTP) for enhanced account security and protection against unauthorized access.",
+      technologies: ["React", "Node.js", "Express", "MongoDB"],
       links: [
         {
-          type: "Source",
-          href: "https://github.com",
-          icon: <Icons.github className="size-3" />,
+          type: "Github",
+          href: "https://github.com/MiguelOchoa1/2FA",
+          icon: Icons.github,
         },
       ],
-      image: "/projects/prabhawatt.png",
+      image: "/lock.png",
     },
+    
   ],
-  positions: [
-    {
-      title: "Certifications & Achievements",
-      dates: "2025",
-      location: "Professional Development",
-      description:
-        "CompTIA Security+ Certification | Palo Alto Academy Certification | CISSP (Certified Information Systems Security Professional) - In Progress",
-      image: undefined,
-      links: [
-        {
-          title: "CompTIA",
-          href: "https://www.comptia.org/",
-        },
-        {
-          title: "Palo Alto Networks",
-          href: "https://www.paloaltonetworks.com/",
-        },
-      ],
-    },
-  ],
-  achievements: [],
+  // positions removed
 } as const;

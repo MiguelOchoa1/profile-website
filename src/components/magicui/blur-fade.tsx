@@ -7,12 +7,14 @@ interface BlurFadeProps {
   children: React.ReactNode;
   className?: string;
   variant?: {
-    hidden: { y: number };
-    visible: { y: number };
+    hidden: { x?: number; y?: number; opacity?: number; filter?: string };
+    visible: { x?: number; y?: number; opacity?: number; filter?: string };
   };
   duration?: number;
   delay?: number;
   yOffset?: number;
+  xOffset?: number;
+  direction?: "up" | "down" | "left" | "right";
   inView?: boolean;
   inViewMargin?: string | undefined;
   blur?: string;
@@ -24,10 +26,12 @@ const BlurFade = ({
   variant,
   duration = 0.4,
   delay = 0,
-  yOffset = 6,
+  yOffset = 4,
+  xOffset = 15,
+  direction = "up",
   inView = false,
   inViewMargin = "-50px",
-  blur = "6px",
+  blur = "3px",
 }: BlurFadeProps) => {
   const ref = useRef(null);
   // @ts-ignore
@@ -37,11 +41,38 @@ const BlurFade = ({
     margin: inViewMargin,
   });
   const isInView = !inView || inViewResult;
-  const defaultVariants: Variants = {
-    hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
-    visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
+
+  const getDefaultVariants = (): Variants => {
+    switch (direction) {
+      case "up":
+        return {
+          hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
+          visible: { y: 0, opacity: 1, filter: `blur(0px)` },
+        };
+      case "down":
+        return {
+          hidden: { y: -yOffset, opacity: 0, filter: `blur(${blur})` },
+          visible: { y: 0, opacity: 1, filter: `blur(0px)` },
+        };
+      case "left":
+        return {
+          hidden: { x: xOffset, opacity: 0, filter: `blur(${blur})` },
+          visible: { x: 0, opacity: 1, filter: `blur(0px)` },
+        };
+      case "right":
+        return {
+          hidden: { x: -xOffset, opacity: 0, filter: `blur(${blur})` },
+          visible: { x: 0, opacity: 1, filter: `blur(0px)` },
+        };
+      default:
+        return {
+          hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
+          visible: { y: 0, opacity: 1, filter: `blur(0px)` },
+        };
+    }
   };
-  const combinedVariants = variant || defaultVariants;
+
+  const combinedVariants = variant || getDefaultVariants();
 
   return (
     <motion.div

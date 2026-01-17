@@ -9,7 +9,7 @@ export const DATA = {
   avatarUrl: "/cover.jpg",
   initials: "MO",
   navbar: [
-    { href: "/job", label: "Home", icon: Icons.globe },
+    { href: "/job", label: "Home", icon: Icons.trebleClef },
   ],
   contact: {
     email: "hello@example.com",

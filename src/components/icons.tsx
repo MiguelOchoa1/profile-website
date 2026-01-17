@@ -1,4 +1,6 @@
-import { GlobeIcon, MailIcon, Briefcase } from "lucide-react";
+import { GlobeIcon, MailIcon, Briefcase, Music } from "lucide-react";
+import { GiGClef } from "react-icons/gi";
+import { FaUserTie } from "react-icons/fa";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -6,7 +8,9 @@ export const Icons = {
   globe: (props: IconProps) => <GlobeIcon {...props} />,
   email: (props: IconProps) => <MailIcon {...props} />,
   briefcase: (props: IconProps) => <Briefcase {...props} />,
-
+  music: (props: IconProps) => <Music {...props} />,
+  trebleClef: (props: IconProps) => <GiGClef {...props} />,
+  manInSuit: (props: IconProps) => <FaUserTie {...props} />,
 
   youtube: (props: IconProps) => (
     <svg

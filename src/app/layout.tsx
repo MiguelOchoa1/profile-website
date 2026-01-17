@@ -8,11 +8,19 @@ import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+// Import Nunito as Avenir Next alternative
+const avenirNext = Nunito({
+  subsets: ["latin"],
+  variable: "--font-avenir",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -73,12 +81,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-4xl mx-auto py-12 sm:py-24",
+          "min-h-screen bg-[url('/bg.jpg')] bg-repeat bg-center bg-auto font-sans antialiased py-12 sm:py-24",
           fontSans.variable,
+          avenirNext.variable,
         )}
       >
         <PostHogProvider>
-          <ThemeProvider attribute="class" defaultTheme="light">
+          <ThemeProvider attribute="class" defaultTheme="dark">
             <TooltipProvider delayDuration={0}>
               {children}
               <Navbar />
