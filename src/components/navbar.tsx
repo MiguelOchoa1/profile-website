@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Briefcase } from "lucide-react";
+import { IconProps } from "@/components/icons";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -20,7 +21,7 @@ export default function Navbar() {
 
   const navItems = DATA.navbar.map((item) => {
     if (pathname === "/") {
-      return { ...item, href: "/job", icon: (props) => <Briefcase {...props} />, label: "Resume" };
+      return { ...item, href: "/job", icon: (props: IconProps) => <Briefcase {...props} />, label: "Resume" };
     }
     return item;
   });
