@@ -148,7 +148,7 @@ export const DATA = {
       school: "Miami Dade College",
       href: "https://www.mdc.edu/",
       degree: "AA in Computer Science",
-      logoUrl: "/micro.png",
+      logoUrl: "/Miami.jpeg",
       start: "2021",
       end: "2023",
     },
@@ -260,7 +260,7 @@ export const DATA = {
           icon: Icons.github,
         },
       ],
-      image: "/lock.png",
+      image: "/Lock.png",
     },
     
   ],
