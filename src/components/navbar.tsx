@@ -8,10 +8,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/site";
-import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Briefcase } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -20,7 +20,7 @@ export default function Navbar() {
 
   const navItems = DATA.navbar.map((item) => {
     if (pathname === "/") {
-      return { ...item, href: "/job", icon: Icons.briefcase, label: "Resume" };
+      return { ...item, href: "/job", icon: (props) => <Briefcase {...props} />, label: "Resume" };
     }
     return item;
   });
