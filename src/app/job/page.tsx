@@ -56,7 +56,12 @@ const definitions: { [key: string]: string } = {
   "pain": "Jeff Buckley."
 };
 
-const stories = [
+type Story = {
+  title: string;
+  content: string;
+};
+
+const stories: Story[] = [
   {
     title: "What No One Tells You About Enterprise Surveillance Systems",
     content: `When people hear "enterprise surveillance," they usually picture cameras on walls and a monitor full of screens. What no one tells you is that the real work happens long before the first camera is ever mounted.
@@ -83,7 +88,7 @@ This is about architecture, planning, and restraint. The best systems are the on
 
 export default function JobPage() {
   const [expandedStory, setExpandedStory] = useState<number | null>(null);
-  const [selectedBlog, setSelectedBlog] = useState<any | null>(null);
+  const [selectedBlog, setSelectedBlog] = useState<Story | null>(null);
   const [textVisible, setTextVisible] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
