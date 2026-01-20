@@ -48,7 +48,7 @@ const slideFromLeft = {
   visible: { x: 0, opacity: 1, filter: "blur(0px)" },
 };
 
-const definitions = {
+const definitions: { [key: string]: string } = {
   "star topology": "Star Topology is a network setup in which each device is connected to a central node called a hub.",
   "Network Design": "Network Design refers to the process of planning and implementing the layout of a computer network.",
   "centralized NVR": "NVR stands for Network Video Recorder, a specialized computer system designed for recording video from IP cameras in a surveillance system.",
