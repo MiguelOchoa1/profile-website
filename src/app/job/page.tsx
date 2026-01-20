@@ -270,7 +270,7 @@ export default function JobPage() {
                 <div className="flex justify-start items-center">
                   <h2 className="text-2xl font-bold text-blue-500 underline">About</h2>
                   <a
-                    href="/Miguels Resume.pdf"
+                    href="/re.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block px-2 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold text-sm shadow-[0_0_20px_rgba(59,130,246,0.5)] ml-auto mr-4"
