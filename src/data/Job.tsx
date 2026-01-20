@@ -148,7 +148,7 @@ export const DATA = {
       school: "Miami Dade College",
       href: "https://www.mdc.edu/",
       degree: "AA in Computer Science",
-      logoUrl: "/miami.jpeg",
+      logoUrl: "/Miami.jpeg",
       start: "2021",
       end: "2023",
     },
