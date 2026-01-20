@@ -318,11 +318,10 @@ export default function JobPage() {
                   <div className="flex gap-4 border border-[#424c8d] rounded-lg p-4 bg-[#0f121b] bg-[radial-gradient(100%_100%_at_50%_0%,_rgba(50,49,118,0.17)_0%,_rgba(10,14,21,0)_100%)] text-[#e8e6e3] hover:scale-110 transition-transform">
                     <div className="flex-shrink-0 w-10 h-10 relative mt-1 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.8)]">
                       {work.logoUrl && (
-                        <Image
+                        <img
                           src={work.logoUrl}
                           alt={work.company}
-                          fill
-                          className="rounded-full object-cover"
+                          className="w-full h-full rounded-full object-cover"
                         />
                       )}
                     </div>
@@ -369,11 +368,10 @@ export default function JobPage() {
                   <div className="flex gap-4 items-start justify-between border border-[#424c8d] rounded-lg p-4 bg-[#0f121b] bg-[radial-gradient(100%_100%_at_50%_0%,_rgba(50,49,118,0.17)_0%,_rgba(10,14,21,0)_100%)] text-[#e8e6e3] hover:scale-110 transition-transform">
                     <div className={`flex-shrink-0 w-10 h-10 relative mt-1 rounded-full ${cert.issuer.includes('Palo Alto') ? 'shadow-[0_0_15px_rgba(249,115,22,0.8)]' : cert.title.includes('CompTIA') ? 'shadow-[0_0_15px_rgba(239,68,68,0.8)]' : cert.issuer.includes('Florida International University') ? 'shadow-[0_0_15px_rgba(30,64,175,0.8)]' : cert.issuer.includes('Intelligent Power League') ? 'shadow-[0_0_15px_rgba(128,128,128,0.8)]' : 'shadow-[0_0_15px_rgba(59,130,246,0.8)]'}`}>
                       {"logoUrl" in cert && (cert as any).logoUrl && (
-                        <Image
+                        <img
                           src={(cert as any).logoUrl}
                           alt={cert.title}
-                          fill
-                          className="rounded-full object-cover"
+                          className="w-full h-full rounded-full object-cover"
                         />
                       )}
                     </div>
@@ -414,11 +412,10 @@ export default function JobPage() {
                   <div className="flex gap-4 border border-[#424c8d] rounded-lg p-4 bg-[#0f121b] bg-[radial-gradient(100%_100%_at_50%_0%,_rgba(50,49,118,0.17)_0%,_rgba(10,14,21,0)_100%)] text-[#e8e6e3] hover:scale-110 transition-transform">
                     <div className={`flex-shrink-0 w-10 h-10 relative mt-1 rounded-full ${edu.school.includes('Florida International University') ? 'shadow-[0_0_15px_rgba(30,64,175,0.8)]' : 'shadow-[0_0_15px_rgba(59,130,246,0.8)]'}`}>
                       {edu.logoUrl && (
-                        <Image
+                        <img
                           src={edu.logoUrl}
                           alt={edu.school}
-                          fill
-                          className="rounded-full object-cover"
+                          className="w-full h-full rounded-full object-cover"
                         />
                       )}
                     </div>
