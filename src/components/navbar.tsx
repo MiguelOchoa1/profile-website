@@ -8,23 +8,33 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/site";
+import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   const pathname = usePathname();
   const homeVisible = new Set(["Spotify", "YouTube", "Instagram", "TikTok"]);
   const hideOnJob = new Set(["Spotify", "YouTube", "TikTok"]);
+
+  const navItems = DATA.navbar.map((item) => {
+    if (pathname === "/") {
+      return { ...item, href: "/job", icon: Icons.briefcase, label: "Resume" };
+    }
+    return item;
+  });
+
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
       <div className="fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
       <Dock className="z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-[radial-gradient(circle_at_center,_#8B6A4A_0%,_#544228_50%,_#3A2A1A_100%)] [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] ">
-        {DATA.navbar.map((item) => (
+        {navItems.map((item) => (
           <DockIcon key={item.href}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <a
-                  href={pathname?.startsWith("/job") && item.label === "Home" ? "/" : item.href}
+                <Link
+                  href={item.href}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "size-20 animate-shake-zoom",
@@ -39,10 +49,10 @@ export default function Navbar() {
                       glowClass = "drop-shadow-[0_0_10px_rgba(255,0,255,0.8)]";
                     }
                     return (
-                      <item.icon className={cn("size-12", colorClass, "animate-periodic-shake", glowClass)} />
+                      <item.icon className={cn(pathname === "/" ? "size-8" : "size-12", colorClass, "animate-periodic-shake", glowClass)} />
                     );
                   })()}
-                </a>
+                </Link>
               </TooltipTrigger>
               <TooltipContent>
                 <p>{item.label}</p>
